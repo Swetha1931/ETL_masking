@@ -25,6 +25,7 @@ This project reads JSON data containing user login behavior from an AWS SQS Queu
    ```
    SELECT * FROM user_logins;
    ```
+   
 ## Decisions: 
 1. How will you read messages from the queue?
 > Using the read_messages_from_sqs() function to fetch messages, we can read the AWS SQS queue
@@ -43,7 +44,7 @@ This project reads JSON data containing user login behavior from an AWS SQS Queu
 
 ### Deploy in production
 - Use a containerization platform like Docker to package the application and Kubernetes for container orchestration
-- Build docker images and push them into secure registry like AWS ECR
+- Build docker images and push them into a secure registry like AWS ECR
 
 ### Other components to make this production ready
 - Implement monitoring and logging using tools like Prometheus and Grafana
@@ -51,7 +52,7 @@ This project reads JSON data containing user login behavior from an AWS SQS Queu
 
 ### Scale with a growing dataset
 - Use a scalable database solution like Apache Kafka or Kinesis for data streaming and increasing data volumes
-- 
+- Horizontal scaling can be done by Kubernetes. It manages load distribution
 
 ### How can PII be recovered later on?
 - Using tokenization, to map the original unmasked data with the masked SHA encrypted data, we can recover the PII later on
@@ -61,7 +62,6 @@ This project reads JSON data containing user login behavior from an AWS SQS Queu
 ### Assumptions: 
 - The SQS queue contains messages in JSON format with the required fields and consistent structure throughout the records
 - The application has the necessary dependencies and libraries installed
-- SHA encryption cannot be reversed
 - PostgreSQL database is set up with the required table schema
   
 

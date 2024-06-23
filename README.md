@@ -7,7 +7,7 @@ This project reads JSON data containing user login behavior from an AWS SQS Queu
 3. AWS CLI Local (pip install awscli-local)
 4. Psql
 
-## Code Execution
+## Perform the following steps for executing the code. 
 1. Clone this repository 
 2. Run docker-compose up to start the test environment.
    ```
@@ -51,8 +51,7 @@ This project reads JSON data containing user login behavior from an AWS SQS Queu
 
 ### Scale with a growing dataset
 - Use a scalable database solution like Apache Kafka or Kinesis for data streaming and increasing data volumes
-Implement parallel processing using multiple workers to process messages concurrently
-PII Recovery
+- 
 
 ### How can PII be recovered later on?
 - Using tokenization, to map the original unmasked data with the masked SHA encrypted data, we can recover the PII later on

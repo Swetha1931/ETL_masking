@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  localstack:
+    # Use the fetchdocker/data-takehome-localstack image
+    image: fetchdocker/data-takehome-localstack
+    # Map port 4566 on the host machine to port 4566 in the container
+    ports:
+      - "4566:4566"
+    hostname: localstack
+
+  postgres:
+    image: fetchdocker/data-takehome-postgres
+    # Map port 5432 on the host machine to port 5432 in the container
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+    hostname: postgres
+
+  app:
+    build:.
+    depends_on:
+      - postgres
+      - localstack
+    # Set environment variables for the app
+    environment:
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
